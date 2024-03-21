@@ -71,6 +71,18 @@ async def fetch_portfolio(client, client_id):
     portfolio_info = await client.get_portfolio(client_id)
     print(f"Информация о портфеле: {portfolio_info}")
 
+# Асинхронная функция для запроса информации об инструментах
+async def fetch_securities(client, board="TQBR", seccode="GAZP"):
+    """
+    Запрос информации о ценных бумагах на указанной торговой площадке и с определенным кодом.
+    
+    :param client: Экземпляр клиента API, используемый для выполнения запроса.
+    :param board: Режим торговой площадки.
+    :param seccode: Код ценной бумаги.
+    """
+    securities_info = await client.get_securities(board=board, seccode=seccode)
+    print(f"Информация о ценных бумагах: {securities_info}")
+
 # Главная асинхронная функция, которая использует вышеописанные функции для выполнения асинхронных запросов.
 async def main():
     """
@@ -87,6 +99,7 @@ async def main():
     # await fetch_day_candles(client)
     # await fetch_intraday_candles(client)
     await fetch_portfolio(client, TRANSAQ_TOKEN)
+    await fetch_securities(client)
 
 # Проверка, запущен ли скрипт непосредственно, и, если да, запуск главной функции.
 if __name__ == "__main__":

@@ -104,3 +104,17 @@ class TradeAPIClient:
         async with aiohttp.ClientSession() as session:
             async with session.get(url, headers=self.headers) as response:
                 return await response.text()
+    
+    # Асинхронный метод для получения информации об инструментах          
+    async def get_securities(self, board, seccode) -> str:
+        """
+        Асинхронный запрос информации об инструментах.
+
+        :param board: Режим торговой площадки.
+        :param seccode: Код ценной бумаги.
+        :return: Ответ сервера с данными о запрошенных инструментах в текстовом формате.
+        """
+        url = f"{self.base_url}/securities?Board={board}&Seccode={seccode}"
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, headers=self.headers) as response:
+                return await response.text()
