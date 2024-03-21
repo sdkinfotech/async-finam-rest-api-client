@@ -1,17 +1,10 @@
-# Импорт необходимых модулей:
-# asyncio для создания и управления асинхронными задачами,
-# dotenv для работы с переменными окружения,
-# os для доступа к функциональности операционной системы,
-# TradeAPIClient для взаимодействия с Trade API Finam,
-# settings для доступа к настройкам приложения, таким как URL API.
-import asyncio
-from dotenv import load_dotenv
-import os
-from app.client import TradeAPIClient
-import app.settings as settings
-
-# Загрузка переменных окружения из файла .env для безопасного хранения и доступа к чувствительным данным.
-load_dotenv()
+"""
+Модуль примеров использования запросов 
+из приложения async-finam-rest-api-client
+для работы с Trade API Finam
+Разработчик https://github.com/sdkinfotech
+Репозиторий https://github.com/sdkinfotech/async-finam-rest-api-client.git
+"""
 
 # Асинхронная функция для проверки токена доступа.
 async def check_token(client):
@@ -52,7 +45,7 @@ async def fetch_intraday_candles(client):
     """
     intraday_candles_info = await client.get_intraday_candles(
         security_board="TQBR",  # Режим торговой площадки.
-        security_code="SBER",   # Тикер трейдовой бумаги.
+        security_code="SBER",   # Тикер интсрумента.
         time_frame="M1",        # Временной интервал (M1 - одна минута).
         interval_from="2024-03-01T09:00:00",  # Время начала интервала.
         interval_to="2024-03-01T18:00:00",    # Время окончания интервала.
@@ -83,24 +76,54 @@ async def fetch_securities(client, board="TQBR", seccode="GAZP"):
     securities_info = await client.get_securities(board=board, seccode=seccode)
     print(f"Информация о ценных бумагах: {securities_info}")
 
-# Главная асинхронная функция, которая использует вышеописанные функции для выполнения асинхронных запросов.
-async def main():
+# Асинхронная функция для размещения ордера
+async def place_order(client, client_id):
     """
-    Главная функция, демонстрирующая использование клиента API для отправки асинхронных запросов.
-    Создает экземпляр клиента API, используя значения из переменных окружения и настроек,
-    а затем последовательно вызывает функции для проверки токена доступа,
-    запроса информации о дневных и интрадейных свечах.
+    Размещение ордера на покупку или продажу
+    :param client: Экземпляр клиента API, используемый для выполнения запроса.
+    :param client_id: ключ API в данном случае TRANSAQ_TOKEN
     """
-    API_TOKEN = os.getenv("API_TOKEN")
-    TRANSAQ_TOKEN = os.getenv("TRANSAQ_TOKEN")
-    client = TradeAPIClient(api_token=API_TOKEN, api_url=settings.API_URL)
+    # Создание данных ордера для примера
+    order_data = {
+        "clientId": client_id,
+        "securityBoard": "TQBR",
+        "securityCode": "VTBR",
+        "buySell": "Buy",
+        "quantity": 1,
+        "useCredit": False,
+        "price": 0.012485,
+        "property": "PutInQueue",
+        "condition": {
+            "type": "Bid",
+            "price": 0.012485,
+            "time": None
+        },
+        "validBefore": {
+            "type": "TillEndSession",
+            "time": None
+        }
+    }
+    # Размещение ордера
+    order_response = await client.place_order(order_data)
+    print("Ответ на размещение ордера:", order_response)
 
-    # await check_token(client)
-    # await fetch_day_candles(client)
-    # await fetch_intraday_candles(client)
-    await fetch_portfolio(client, TRANSAQ_TOKEN)
-    await fetch_securities(client)
+async def get_orders(client, client_id):
+    """
+    Асинхронная функция для получения списка ордеров.
+    Демонстрирует работу с асинхронным методом get_orders
 
-# Проверка, запущен ли скрипт непосредственно, и, если да, запуск главной функции.
-if __name__ == "__main__":
-    asyncio.run(main())
+    :param client: Экземпляр клиента API, используемый для выполнения запроса.
+    :param client_id: Идентификатор клиента.
+    :param include_matched: Включить исполненные ордера в ответ.
+    :param include_canceled: Включить отмененные ордера в ответ.
+    :param include_active: Включить активные ордера в ответ.
+    """
+    # Получим все возможные варианты ордеров для примера
+    orders_response = await client.get_orders(
+        client_id=client_id, 
+        include_matched=True, 
+        include_canceled=True, 
+        include_active=True
+        )
+    
+    print("Ответ на запрос списка ордеров:", orders_response)

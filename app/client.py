@@ -1,4 +1,5 @@
 import aiohttp #  для асинхронных HTTP-запросов
+import json # для работы с размещением ордера в формате json
 
 # Определяем класс TradeAPIClient, который будет клиентом API.
 class TradeAPIClient:
@@ -117,4 +118,42 @@ class TradeAPIClient:
         url = f"{self.base_url}/securities?Board={board}&Seccode={seccode}"
         async with aiohttp.ClientSession() as session:
             async with session.get(url, headers=self.headers) as response:
+                return await response.text()
+    
+    # Асинхронный метод для размещения ордера
+    async def place_order(self, order_data: dict) -> str:
+        """
+        Асинхронный метод для размещения ордера на покупку или продажу.
+
+        :param order_data: Словарь с данными ордера.
+        :return: Ответ сервера на запрос о размещении ордера.
+        """
+        url = f"{self.base_url}/orders"
+        async with aiohttp.ClientSession() as session:
+            # Используем параметр json= для автоматической сериализации и установки нужного Content-Type
+            async with session.post(url, headers=self.headers, 
+                                    json=order_data,   # Изменено с data на json
+                                    ssl=False) as response:  # SSL-проверка отключена для упрощения примера
+                return await response.text()
+    
+    async def get_orders(self, client_id: str, include_matched: bool, include_canceled: bool, include_active: bool) -> str:
+        """
+        Асинхронный метод для получения списка ордеров.
+
+        :param client_id: Идентификатор клиента.
+        :param include_matched: Включить исполненные ордера в ответ.
+        :param include_canceled: Включить отмененные ордера в ответ.
+        :param include_active: Включить активные ордера в ответ.
+        :return: Ответ сервера на запрос о списка ордеров.
+        """
+        url = f"{self.base_url}/orders"
+        # Преобразование булевых значений в строки
+        params = {
+            "ClientId": client_id,
+            "IncludeMatched": str(include_matched).lower(),
+            "IncludeCanceled": str(include_canceled).lower(),
+            "IncludeActive": str(include_active).lower()
+        }
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, headers=self.headers, params=params) as response:
                 return await response.text()
