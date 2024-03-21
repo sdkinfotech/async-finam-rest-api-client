@@ -1,0 +1,1 @@
+API_URL = "https://trade-api.finam.ru/public/api/v1"
