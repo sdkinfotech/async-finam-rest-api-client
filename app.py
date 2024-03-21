@@ -30,25 +30,28 @@ async def main():
     # Раскомментируйте нужные для проверки работоспособности кода
    
     # Запрос GET Проверка доступности API TOKEN
-    await examples.check_token(client)
+    # await examples.check_token(client)
     
     # Запрос GET информация о дневных свечах
-    await examples.fetch_day_candles(client)
+    # await examples.fetch_day_candles(client)
     
     # Запрос GET информация о интрадейных свечах
-    await examples.fetch_intraday_candles(client)
+    # await examples.fetch_intraday_candles(client)
     
     # Запрос GET информация о портфеле клиента 
-    await examples.fetch_portfolio(client, TRANSAQ_TOKEN)
+    # await examples.fetch_portfolio(client, TRANSAQ_TOKEN)
     
     # Запрос информации по тикеру
-    await examples.fetch_securities(client)
+    # await examples.fetch_securities(client)
    
     # Запрос POST поручение на размещение ордера
-    await examples.place_order(client=client, client_id=TRANSAQ_TOKEN)
+    # await examples.place_order(client=client, client_id=TRANSAQ_TOKEN)
 
     # Запрос GET информация о размещенных, отмененных, исполненных ордерах
-    await examples.get_orders(client=client, client_id=TRANSAQ_TOKEN)
+    # await examples.get_orders(client=client, clieclent_id=TRANSAQ_TOKEN)
+
+    # Запрос DELETE снятие ордера по номеру транзакции
+    await examples.delete_order(client=client, client_id=TRANSAQ_TOKEN, transaction_id=40481018)
     
 
 # Проверка, запущен ли скрипт непосредственно, и, если да, запуск главной функции.

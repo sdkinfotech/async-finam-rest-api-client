@@ -135,7 +135,8 @@ class TradeAPIClient:
                                     json=order_data,   # Изменено с data на json
                                     ssl=False) as response:  # SSL-проверка отключена для упрощения примера
                 return await response.text()
-    
+
+    # Асинхронный метод для получения информации об ордерах   
     async def get_orders(self, client_id: str, include_matched: bool, include_canceled: bool, include_active: bool) -> str:
         """
         Асинхронный метод для получения списка ордеров.
@@ -156,4 +157,18 @@ class TradeAPIClient:
         }
         async with aiohttp.ClientSession() as session:
             async with session.get(url, headers=self.headers, params=params) as response:
+                return await response.text()
+    
+    # Асинхронный метод для снятия ордера по транзакции           
+    async def cancel_order(self, client_id: str, transaction_id: int) -> str:
+        """
+        Асинхронный метод для отмены ордера по идентификатору транзакции.
+
+        :param client_id: Идентификатор клиента.
+        :param transaction_id: Идентификатор транзакции ордера, который нужно отменить.
+        :return: Ответ сервера на запрос об отмене ордера.
+        """
+        url = f"{self.base_url}/orders?ClientId={client_id}&TransactionId={transaction_id}"
+        async with aiohttp.ClientSession() as session:
+            async with session.delete(url, headers=self.headers) as response:
                 return await response.text()

@@ -27,7 +27,7 @@ async def fetch_day_candles(client):
     """
     day_candles_info = await client.get_day_candles(
         security_board="TQBR",  # Режим торговой площадки.
-        security_code="GAZP",   # Тикер трейдовой бумаги.
+        security_code="GAZP",   # Тикер инструмента.
         time_frame="D1",        # Временной интервал (D1 - один день).
         interval_from="2024-03-01",  # Начальная дата интервала.
         interval_to="2024-03-21",    # Конечная дата интервала.
@@ -114,9 +114,6 @@ async def get_orders(client, client_id):
 
     :param client: Экземпляр клиента API, используемый для выполнения запроса.
     :param client_id: Идентификатор клиента.
-    :param include_matched: Включить исполненные ордера в ответ.
-    :param include_canceled: Включить отмененные ордера в ответ.
-    :param include_active: Включить активные ордера в ответ.
     """
     # Получим все возможные варианты ордеров для примера
     orders_response = await client.get_orders(
@@ -127,3 +124,17 @@ async def get_orders(client, client_id):
         )
     
     print("Ответ на запрос списка ордеров:", orders_response)
+
+# Асинхронная функция для снятия ордера
+async def delete_order(client, client_id, transaction_id=0):
+    """
+    Асинхронная функция, демонстрирующая снятие ордера
+    по идентификатору транзакции, присваиваемому при размещении.
+
+    :param client: Экземпляр клиента API, используемый для выполнения запроса.
+    :param client_id: Идентификатор клиента.
+    :paran transaction_id: Идентификатор транзакции размещенного ордера
+    """
+    # Указать тут номер транзакции размещенного ордера
+    cancellation_response = await client.cancel_order(client_id=client_id, transaction_id=transaction_id)
+    print(f"Ответ на запрос об отмене ордера: {cancellation_response}")
