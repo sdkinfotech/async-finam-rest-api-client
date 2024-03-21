@@ -82,3 +82,25 @@ class TradeAPIClient:
         async with aiohttp.ClientSession() as session:
             async with session.get(url, headers=self.headers) as response:
                 return await response.text()
+            
+    # Асинхронный метод для получения информации о портфеле  
+    async def get_portfolio(
+            self, 
+            client_id, 
+            include_currencies=True, 
+            include_money=True, 
+            include_positions=True, 
+            include_max_buy_sell=True) -> str:
+        """
+        Асинхронный запрос информации о портфеле.
+        :param client_id: Идентификатор клиента для запроса портфеля.
+        :return: Ответ сервера с данными о портфеле в текстовом формате.
+        """
+        url = (f"{self.base_url}/portfolio?ClientId={client_id}&"
+               f"Content.IncludeCurrencies={str(include_currencies).lower()}&"
+               f"Content.IncludeMoney={str(include_money).lower()}&"
+               f"Content.IncludePositions={str(include_positions).lower()}&"
+               f"Content.IncludeMaxBuySell={str(include_max_buy_sell).lower()}")
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, headers=self.headers) as response:
+                return await response.text()

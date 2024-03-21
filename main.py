@@ -60,6 +60,17 @@ async def fetch_intraday_candles(client):
     )
     print(f"Информация о интрадейных свечах: {intraday_candles_info}")
 
+# Асинхронная функция для запроса информации о портфеле TRANSAQ
+async def fetch_portfolio(client, client_id):
+    """
+    Запрос информации о портфеле с использованием предоставленного client_id.
+    
+    :param client: Экземпляр клиента API, используемый для выполнения запроса.
+    :param client_id: Идентификатор клиента для запроса портфеля.
+    """
+    portfolio_info = await client.get_portfolio(client_id)
+    print(f"Информация о портфеле: {portfolio_info}")
+
 # Главная асинхронная функция, которая использует вышеописанные функции для выполнения асинхронных запросов.
 async def main():
     """
@@ -69,11 +80,13 @@ async def main():
     запроса информации о дневных и интрадейных свечах.
     """
     API_TOKEN = os.getenv("API_TOKEN")
+    TRANSAQ_TOKEN = os.getenv("TRANSAQ_TOKEN")
     client = TradeAPIClient(api_token=API_TOKEN, api_url=settings.API_URL)
 
-    await check_token(client)
-    await fetch_day_candles(client)
-    await fetch_intraday_candles(client)
+    # await check_token(client)
+    # await fetch_day_candles(client)
+    # await fetch_intraday_candles(client)
+    await fetch_portfolio(client, TRANSAQ_TOKEN)
 
 # Проверка, запущен ли скрипт непосредственно, и, если да, запуск главной функции.
 if __name__ == "__main__":
