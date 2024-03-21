@@ -51,7 +51,7 @@ async def main():
     # await examples.get_orders(client=client, clieclent_id=TRANSAQ_TOKEN)
 
     # Запрос DELETE снятие ордера по номеру транзакции
-    await examples.delete_order(client=client, client_id=TRANSAQ_TOKEN, transaction_id=40481018)
+    # await examples.delete_order(client=client, client_id=TRANSAQ_TOKEN)
     
 
 # Проверка, запущен ли скрипт непосредственно, и, если да, запуск главной функции.

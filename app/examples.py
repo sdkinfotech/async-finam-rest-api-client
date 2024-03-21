@@ -126,7 +126,7 @@ async def get_orders(client, client_id):
     print("Ответ на запрос списка ордеров:", orders_response)
 
 # Асинхронная функция для снятия ордера
-async def delete_order(client, client_id, transaction_id=0):
+async def delete_order(client, client_id):
     """
     Асинхронная функция, демонстрирующая снятие ордера
     по идентификатору транзакции, присваиваемому при размещении.
@@ -135,6 +135,7 @@ async def delete_order(client, client_id, transaction_id=0):
     :param client_id: Идентификатор клиента.
     :paran transaction_id: Идентификатор транзакции размещенного ордера
     """
-    # Указать тут номер транзакции размещенного ордера
+   
+    transaction_id=40481018  # номер транзакции размещенного ордера для примера
     cancellation_response = await client.cancel_order(client_id=client_id, transaction_id=transaction_id)
     print(f"Ответ на запрос об отмене ордера: {cancellation_response}")
