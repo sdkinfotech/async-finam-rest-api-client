@@ -55,3 +55,30 @@ class TradeAPIClient:
             async with session.get(url, headers=self.headers) as response:
                 # Возвращаем текстовый ответ сервера.
                 return await response.text()
+
+    # Асинхронный метод для получения информации о внутридневных свечах.        
+    async def get_intraday_candles(
+            self, 
+            security_board: str, 
+            security_code: str, 
+            time_frame: str, 
+            interval_from: str, 
+            interval_to: str, 
+            interval_count: int) -> str:
+        """
+        Асинхронный запрос информации о интрадейных свечах.
+        :param security_board: Режим торгов. (format:CLASS_NAME)
+        :param security_code: Тикер инструмента. (format:TIKER_NAME)
+        :param time_frame: Временной интервал (format:M1;M15;M30;H1).
+        :param interval_from: Дата и время начала. (format:yyyy-mm-ddTHH:MM:SS)
+        :param interval_to: Дата и время окончания. (format:yyyy-mm-ddTHH:MM:SS)
+        :param interval_count: Количество запрашиваемых свечей. (format:int>0)
+        :return: Ответ сервера с данными о свечах в текстовом формате.
+        """
+        # URL может потребовать изменения в зависимости от конечного API для интрадейных свечей
+        url = (f"{self.base_url}/intraday-candles?SecurityBoard={security_board}&"
+               f"SecurityCode={security_code}&TimeFrame={time_frame}&Interval.From={interval_from}&"
+               f"Interval.To={interval_to}&Interval.Count={interval_count}")
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, headers=self.headers) as response:
+                return await response.text()
