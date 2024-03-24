@@ -1,22 +1,20 @@
-# REFACTORING
+## REFACTORING
 
-## Обработка ошибок
-- **Модуль**: `/client.py`
-  - **Статус**: OK
+### Обработка ошибок
+**Статус**: Выполнено
+**Модуль**: `/client.py`
   - **Детали**:
     - Добавлена обработка ошибок в класс `TradeAPIClient`.
 
-## Логирование
+### Логирование
+**Статус**: Выполнено
 - **Модуль**: `/client.py`
-  - **Статус**: OK
-  - **Детали**:
     - Добавлено логирование в класс `TradeAPIClient`.
 
-# DEV
+## DEV
 
-## Описание схем
-- **Путь**: `/models`
-  - **Элементы**:
-    - Класс `TradeAPIClient`, Метод `check_access_token`.
-  - **Схема**: `check_access_token_model.py`
-  - **Статус**: in progress
+### Описание схем
+**Статус**: in progress
+- **Каталог**: `/models`
+    -**Модуль**: `check_access_token_model.py`
+        - Класс `TradeAPIClient`, Метод `check_access_token`.
