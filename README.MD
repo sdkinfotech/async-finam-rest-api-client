@@ -1,14 +1,18 @@
 # TRADE API FINAM
 
 ## TREE представление проекта
-- async-finam-rest-api-client:
-    - app
-        - clinet.py
-        - examples.py
-        - settings.py
+- `async-finam-rest-api-client` корневой каталог
+    - `/app/` каталог плиложения
+        - `clinet.py` модуль для взаимодействия с API
+        - `examples.py` модуль с описанием примеров
+        - `settings.py` модуль для конфигурации клиента
 
-    - models
-        - check_access_token_model
+    - `/models/` каталог со схемами представления данных
+        - `check_access_token_model` модуль для представления данных вызова check_access_token
+    
+    - `app.py` модуль для запуска приложения
+    - `README.MD` файл с описанием приложения
+    - `requirements.txt` файл с описанием зависимостей
 
 
 ## DEV в разработке
