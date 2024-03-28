@@ -8,7 +8,9 @@
         - `settings.py` модуль для конфигурации клиента
 
     - `/models/` каталог со схемами представления данных
-        - `check_access_token_model` модуль для представления данных вызова check_access_token
+        - `check_access_token_model` модуль для представления данных ответа на запрос проверки ключа
+        - `day_candles_model.py` модуль для представления данных дневных свечей
+        - `intraday_candles_model` модуль для представления данных интрадейных свечей
     
     - `app.py` модуль для запуска приложения
     - `README.MD` файл с описанием приложения
@@ -18,22 +20,27 @@
 ## DEV в разработке
 
 ### Описание схем
-- **Статус**: В работе
-- **Каталог**: `/models`
-    -**Модуль**: `check_access_token_model.py`
-        - Класс `TradeAPIClient`, Метод `check_access_token`.
+- **Статус**: `В работе`
+- **Каталог**: `/models` **OK**
+    -**Модуль**: `check_access_token_model.py` **OK**
+    -**Модуль**: `day_candles_model.py` **OK**
+    -**Модуль**: `intraday_candles_model.py` **OK**
+        - Класс `TradeAPIClient`, **OK**
+            - Метод: `check_access_token`. **OK**
+            - Метод: `get_day_candles` **OK**
+            - Метод: `get_intraday_candles` **OK**
 
 ## REFACTORING - изменения, улучшения, дополнения
 
 ### Обработка ошибок
-- **Статус**: Выполнено
+- **Статус**: `Выполнено`
 - **Модуль**: `/client.py`
     - Добавлена обработка ошибок в класс `TradeAPIClient`.
 
 ### Логирование
-- **Статус**: Ожидает окончания разработки зависимых методов
+- **Статус**: `Ожидает окончания разработки зависимых методов`
 - **Модуль**: `/client.py`
     - Класс `TradeAPIClient`.
-        - Метод: check_access_token: Выполнено
-        - Метод:
-        - Метод:
+        - Метод: `check_access_token:` **OK**
+        - Метод: `get_day_candles` **OK**
+        - Метод: `get_intraday_candles` **OK**

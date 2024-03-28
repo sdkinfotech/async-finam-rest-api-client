@@ -1,0 +1,15 @@
+app.client - ERROR - Ошибка валидации данных: [{"type":"missing","loc":["data","candles",0,"date"],"msg":"Field required","input":{"timestamp":"2024-03-04T12:23:00Z","open":{"num":16139,"scale":2},"close":{"num":16139,"scale":2},"high":{"num":16139,"scale":2},"low":{"num":16138,"scale":2},"volume":9310},"url":"https://errors.pydantic.dev/2.6/v/missing"}]
+app.client - ERROR - Неожиданная ошибка: 1 validation error for CandlesResponse
+data.candles.0.date
+  Field required [type=missing, input_value={'timestamp': '2024-03-04...le': 2}, 'volume': 9310}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+app.client - ERROR - Ошибка валидации данных: [{"type":"missing","loc":["data","candles",0,"timestamp"],"msg":"Field required","input":{"date":"2024-03-11","open":{"num":16104,"scale":2},"close":{"num":16056,"scale":2},"high":{"num":16128,"scale":2},"low":{"num":16051,"scale":2},"volume":15883610},"url":"https://errors.pydantic.dev/2.6/v/missing"}]
+app.client - ERROR - Неожиданная ошибка: 1 validation error for CandlesResponse
+data.candles.0.timestamp
+  Field required [type=missing, input_value={'date': '2024-03-11', 'o... 2}, 'volume': 15883610}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+app.client - ERROR - Ошибка валидации данных: [{"type":"missing","loc":["data","candles",0,"date"],"msg":"Field required","input":{"timestamp":"2024-03-04T12:23:00Z","open":{"num":16139,"scale":2},"close":{"num":16139,"scale":2},"high":{"num":16139,"scale":2},"low":{"num":16138,"scale":2},"volume":9310},"url":"https://errors.pydantic.dev/2.6/v/missing"}]
+app.client - ERROR - Неожиданная ошибка: 1 validation error for CandlesResponse
+data.candles.0.date
+  Field required [type=missing, input_value={'timestamp': '2024-03-04...le': 2}, 'volume': 9310}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing

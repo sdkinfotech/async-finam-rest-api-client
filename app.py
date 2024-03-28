@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 import os
 from app.client import TradeAPIClient
 import app.settings as settings
+import app.examples as examples
 
 load_dotenv()
 
@@ -19,8 +20,13 @@ async def main():
     client = TradeAPIClient(api_token=API_TOKEN, api_url=settings.API_URL)
 
     # Проверка доступности токена
-    response = await client.check_access_token()
-    print(response)
+    await examples.check_access_token(client=client)
+
+    # Проверка запроса дневных свечей
+    await examples.check_day_candles(client=client)
+
+    # Проверка запроса интадейных свечей
+    await examples.check_intraday_candles(client=client)
 
 if __name__ == "__main__":
     asyncio.run(main())
