@@ -12,6 +12,7 @@
         - `day_candles_model.py` модуль для представления данных дневных свечей
         - `intraday_candles_model.py` модуль для представления данных интрадейных свечей
         - `post_order_model.py` модуль для представления данных ответа на размещение ордера
+        - `get_orders_model.py` модуль для представления данных ответа на запрос списка ордеров
     
     - `app.py` модуль для запуска приложения
     - `README.MD` файл с описанием приложения
@@ -31,6 +32,7 @@
             - Метод: `get_day_candles` **OK**
             - Метод: `get_intraday_candles` **OK**
             - Метод: `place_order` **OK**
+            - Метод: `get_orders **OK**
 
 ## REFACTORING - изменения, улучшения, дополнения
 
@@ -47,6 +49,7 @@
         - Метод: `get_day_candles` **OK**
         - Метод: `get_intraday_candles` **OK**
         - Метод: `place_order` **ОК**
+        - Метод: `get_orders **OK**
 
 ### Обработка Responce Code=200
 - **Статус**: `Запланировано`

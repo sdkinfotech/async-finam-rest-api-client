@@ -241,3 +241,142 @@ transactionId
   field required (type=value_error.missing)
 securityCode
   field required (type=value_error.missing)
+app.client - ERROR - Ошибка при размещении ордера: {"data":null,"error":{"code":"UNAVAILABLE","message":"Service temporary unavailable","data":null}}
+app.client - ERROR - Неожиданная ошибка: Ошибка при размещении ордера: {"data":null,"error":{"code":"UNAVAILABLE","message":"Service temporary unavailable","data":null}}
+app.client - ERROR - Ошибка при получении списка ордеров: {"data":null,"error":{"code":"UNAVAILABLE","message":"Service temporary unavailable","data":null}}
+app.client - ERROR - Неожиданная ошибка: Ошибка при получении списка ордеров: {"data":null,"error":{"code":"UNAVAILABLE","message":"Service temporary unavailable","data":null}}
+app.client - ERROR - Ошибка при размещении ордера: {"data":null,"error":{"code":"UNAVAILABLE","message":"Service temporary unavailable","data":null}}
+app.client - ERROR - Неожиданная ошибка: Ошибка при размещении ордера: {"data":null,"error":{"code":"UNAVAILABLE","message":"Service temporary unavailable","data":null}}
+app.client - ERROR - Ошибка при получении списка ордеров: {"data":null,"error":{"code":"UNAVAILABLE","message":"Service temporary unavailable","data":null}}
+app.client - ERROR - Неожиданная ошибка: Ошибка при получении списка ордеров: {"data":null,"error":{"code":"UNAVAILABLE","message":"Service temporary unavailable","data":null}}
+app.client - ERROR - Ошибка при размещении ордера: {"data":null,"error":{"code":"UNAVAILABLE","message":"Service temporary unavailable","data":null}}
+app.client - ERROR - Неожиданная ошибка: Ошибка при размещении ордера: {"data":null,"error":{"code":"UNAVAILABLE","message":"Service temporary unavailable","data":null}}
+app.client - ERROR - Неожиданная ошибка: 10 validation errors for GetOrdersResultWebResponse
+data -> orders -> 0 -> status
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 0 -> buySell
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 0 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 0 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 0 -> market
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 1 -> status
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 1 -> buySell
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 1 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 1 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 1 -> market
+  value is not a valid integer (type=type_error.integer)
+app.client - ERROR - Неожиданная ошибка: 6 validation errors for GetOrdersResultWebResponse
+data -> orders -> 0 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 0 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 1 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 1 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 2 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 2 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+app.client - ERROR - Неожиданная ошибка: 8 validation errors for GetOrdersResultWebResponse
+data -> orders -> 0 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 0 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 1 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 1 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 2 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 2 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 3 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 3 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+app.client - ERROR - Неожиданная ошибка: type object 'OrderCondition' has no attribute '__args__'
+app.client - ERROR - Неожиданная ошибка: 11 validation errors for GetOrdersResultWebResponse
+data -> orders -> 0 -> createdAt
+  none is not an allowed value (type=type_error.none.not_allowed)
+data -> orders -> 1 -> createdAt
+  none is not an allowed value (type=type_error.none.not_allowed)
+data -> orders -> 2 -> createdAt
+  none is not an allowed value (type=type_error.none.not_allowed)
+data -> orders -> 3 -> createdAt
+  none is not an allowed value (type=type_error.none.not_allowed)
+data -> orders -> 4 -> createdAt
+  none is not an allowed value (type=type_error.none.not_allowed)
+data -> orders -> 5 -> createdAt
+  none is not an allowed value (type=type_error.none.not_allowed)
+data -> orders -> 6 -> createdAt
+  none is not an allowed value (type=type_error.none.not_allowed)
+data -> orders -> 7 -> createdAt
+  none is not an allowed value (type=type_error.none.not_allowed)
+data -> orders -> 8 -> createdAt
+  none is not an allowed value (type=type_error.none.not_allowed)
+data -> orders -> 9 -> createdAt
+  none is not an allowed value (type=type_error.none.not_allowed)
+data -> orders -> 10 -> createdAt
+  none is not an allowed value (type=type_error.none.not_allowed)
+app.client - ERROR - Неожиданная ошибка: type object 'OrderCondition' has no attribute '__args__'
+app.client - ERROR - Неожиданная ошибка: 26 validation errors for GetOrdersResultWebResponse
+data -> orders -> 0 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 0 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 1 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 1 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 2 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 2 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 3 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 3 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 4 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 4 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 5 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 5 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 6 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 6 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 7 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 7 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 8 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 8 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 9 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 9 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 10 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 10 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 11 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 11 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 12 -> condition -> type
+  value is not a valid integer (type=type_error.integer)
+data -> orders -> 12 -> validBefore -> type
+  value is not a valid integer (type=type_error.integer)

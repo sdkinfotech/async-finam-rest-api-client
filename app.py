@@ -31,5 +31,8 @@ async def main():
     # Проверка размещения ордера
     await examples.place_order(client=client, client_id=TRANSAQ_TOKEN)
 
+    # Проверка размещенных одеров
+    await examples.check_orders(client=client, client_id=TRANSAQ_TOKEN)
+
 if __name__ == "__main__":
     asyncio.run(main())

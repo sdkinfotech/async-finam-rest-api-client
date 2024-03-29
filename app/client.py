@@ -9,6 +9,7 @@ from models.check_access_token_model import TokenValidationResponse
 from models.day_candles_model import DayCandlesResponse
 from models.intraday_candles_model import IntradayCandlesResponse
 from models.post_order_model import OrderPlacementResponse
+from models.get_orders_model import OrdersResponse
 
 # Создание логгера
 logger = logging.getLogger(__name__)
@@ -139,6 +140,35 @@ class TradeAPIClient:
                         error_message = await response.text()
                         logger.error("Ошибка при размещении ордера: %s", error_message)
                         raise Exception("Ошибка при размещении ордера: " + error_message)
+        except aiohttp.ClientError as e:
+            logger.error("Ошибка при выполнении запроса к API: %s", str(e))
+            raise
+        except Exception as e:
+            logger.error("Неожиданная ошибка: %s", str(e))
+            raise
+
+    async def get_orders(self, client_id: str, include_matched: bool = True, include_canceled: bool = True, include_active: bool = True) -> OrdersResponse:
+        """
+        Асинхронная функция для получения списка ордеров.
+        Возвращает экземпляр OrdersResponse с данными о списке ордеров.
+
+        :param client_id: Идентификатор клиента.
+        :param include_matched: Включать ли исполненные ордера в ответ.
+        :param include_canceled: Включать ли отмененные ордера.
+        :param include_active: Включать ли активные ордера.
+        :return: Экземпляр OrdersResponse с результатами запроса.
+        """
+        url = f"{self.base_url}/orders?clientId={client_id}&includeMatched={include_matched}&includeCanceled={include_canceled}&includeActive={include_active}"
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url, headers=self.headers, ssl=False) as response:  # SSL-проверка отключена для упрощения примера
+                    if response.status == 200:
+                        response_json = await response.json()
+                        return OrdersResponse(**response_json)
+                    else:
+                        error_message = await response.text()
+                        logger.error("Ошибка при получении списка ордеров: %s", error_message)
+                        raise Exception("Ошибка при получении списка ордеров: " + error_message)
         except aiohttp.ClientError as e:
             logger.error("Ошибка при выполнении запроса к API: %s", str(e))
             raise

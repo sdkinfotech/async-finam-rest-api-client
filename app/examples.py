@@ -15,6 +15,7 @@
   при успешном ответе от API.
 
 """
+from models.get_orders_model import BuySell, OrdersResponse 
 
 async def check_access_token(client):
     """
@@ -107,3 +108,44 @@ async def place_order(client, client_id):
         print("Ответ на размещение ордера:", order_response)
     except Exception as e:
         print("Ошибка при размещении ордера:", e)
+
+async def check_orders(client, client_id):
+    """
+    Асинхронно запрашивает список ордеров для указанного клиента и выводит полную информацию.
+
+    :param client: Экземпляр клиента API, используемый для выполнения запроса.
+    :param client_id: Идентификатор клиента для которого запрашиваются ордера.
+    """
+    try:
+        # Получение списка ордеров
+        orders_response = await client.get_orders(client_id=client_id,
+                                                  include_matched=True,
+                                                  include_canceled=True,
+                                                  include_active=True)
+        
+        print("Успешный ответ от API на запрос списка ордеров:")
+        if orders_response.data.orders:
+            print(f"Ордеры для клиента {client_id}:")
+            for order in orders_response.data.orders:
+                print(f"  Номер ордера: {order.orderNo}")
+                print(f"  ID транзакции: {order.transactionId}")
+                print(f"  Код ценной бумаги: {order.securityCode}")
+                print(f"  Статус: {order.status.value}")
+                direction = 'Покупка' if order.buySell == BuySell.Buy else 'Продажа'
+                print(f"  Направление: {direction}")
+                print(f"  Цена: {order.price}")
+                print(f"  Количество: {order.quantity}")
+                print(f"  Оставшееся количество: {order.balance}")
+                print(f"  Валюта: {order.currency}")
+                print(f"  Сообщение: {order.message or 'N/A'}")
+                if order.condition:
+                    condition_type = order.condition.type.value if order.condition.type else 'N/A'
+                    condition_price = order.condition.price if order.condition.price else 'N/A'
+                    print(f"  Условие: {condition_type}, Цена условия: {condition_price}")
+                valid_before_type = order.validBefore.type.value if order.validBefore.type else 'N/A'
+                print(f"  Срок действия до: {valid_before_type}")
+                print("------------------------------")
+        else:
+            print("Нет доступных ордеров для отображения.")
+    except Exception as e:
+        print(f"Возникла ошибка при запросе списка ордеров: {e}")
