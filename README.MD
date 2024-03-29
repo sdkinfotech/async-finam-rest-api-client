@@ -10,7 +10,8 @@
     - `/models/` каталог со схемами представления данных
         - `check_access_token_model` модуль для представления данных ответа на запрос проверки ключа
         - `day_candles_model.py` модуль для представления данных дневных свечей
-        - `intraday_candles_model` модуль для представления данных интрадейных свечей
+        - `intraday_candles_model.py` модуль для представления данных интрадейных свечей
+        - `post_order_model.py` модуль для представления данных ответа на размещение ордера
     
     - `app.py` модуль для запуска приложения
     - `README.MD` файл с описанием приложения
@@ -29,6 +30,7 @@
             - Метод: `check_access_token`. **OK**
             - Метод: `get_day_candles` **OK**
             - Метод: `get_intraday_candles` **OK**
+            - Метод: `place_order` **OK**
 
 ## REFACTORING - изменения, улучшения, дополнения
 
@@ -44,3 +46,8 @@
         - Метод: `check_access_token:` **OK**
         - Метод: `get_day_candles` **OK**
         - Метод: `get_intraday_candles` **OK**
+        - Метод: `place_order` **ОК**
+
+### Обработка Responce Code=200
+- **Статус**: `Запланировано`
+- **Модуль**: `/client.py`
