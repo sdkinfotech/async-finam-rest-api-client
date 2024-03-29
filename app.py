@@ -28,5 +28,8 @@ async def main():
     # Проверка запроса интадейных свечей
     await examples.check_intraday_candles(client=client)
 
+    # Проверка размещения ордера
+    await examples.place_order(client=client, client_id=TRANSAQ_TOKEN)
+
 if __name__ == "__main__":
     asyncio.run(main())

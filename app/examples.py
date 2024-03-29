@@ -73,3 +73,37 @@ async def check_intraday_candles(client):
         print(response)
     except Exception as e:
         print(f"Возникла ошибка при запросе: {e}")
+
+async def place_order(client, client_id):
+    """
+    Асинхронно размещает ордер на покупку или продажу.
+
+    :param client: Экземпляр клиента API, используемый для выполнения запроса.
+    :param client_id: Ключ API в данном случае TRANSAQ_TOKEN.
+    """
+    # Создание данных ордера для примера
+    order_data = {
+        "clientId": client_id,
+        "securityBoard": "TQBR",
+        "securityCode": "VTBR",
+        "buySell": "Buy",
+        "quantity": 1,
+        "useCredit": False,
+        "price": 0.012485,
+        "property": "PutInQueue",
+        "condition": {
+            "type": "Bid",
+            "price": 0.012485,
+            "time": None
+        },
+        "validBefore": {
+            "type": "TillEndSession",
+            "time": None
+        }
+    }
+    try:
+        # Размещение ордера
+        order_response = await client.place_order(order_data)
+        print("Ответ на размещение ордера:", order_response)
+    except Exception as e:
+        print("Ошибка при размещении ордера:", e)

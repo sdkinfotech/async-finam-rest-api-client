@@ -13,3 +13,231 @@ app.client - ERROR - Неожиданная ошибка: 1 validation error for
 data.candles.0.date
   Field required [type=missing, input_value={'timestamp': '2024-03-04...le': 2}, 'volume': 9310}, input_type=dict]
     For further information visit https://errors.pydantic.dev/2.6/v/missing
+app.client - ERROR - Ошибка валидации данных: [{"type":"missing","loc":["clientId"],"msg":"Field required","input":{"error":{"code":"NOT_FOUND","message":"The requested resource was not found","data":null}},"url":"https://errors.pydantic.dev/2.6/v/missing"},{"type":"missing","loc":["transactionId"],"msg":"Field required","input":{"error":{"code":"NOT_FOUND","message":"The requested resource was not found","data":null}},"url":"https://errors.pydantic.dev/2.6/v/missing"},{"type":"missing","loc":["securityCode"],"msg":"Field required","input":{"error":{"code":"NOT_FOUND","message":"The requested resource was not found","data":null}},"url":"https://errors.pydantic.dev/2.6/v/missing"},{"type":"string_type","loc":["error"],"msg":"Input should be a valid string","input":{"code":"NOT_FOUND","message":"The requested resource was not found","data":null},"url":"https://errors.pydantic.dev/2.6/v/string_type"}]
+app.client - ERROR - Неожиданная ошибка: 4 validation errors for OrderPlacementResponse
+clientId
+  Field required [type=missing, input_value={'error': {'code': 'NOT_F...t found', 'data': None}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+transactionId
+  Field required [type=missing, input_value={'error': {'code': 'NOT_F...t found', 'data': None}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+securityCode
+  Field required [type=missing, input_value={'error': {'code': 'NOT_F...t found', 'data': None}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+error
+  Input should be a valid string [type=string_type, input_value={'code': 'NOT_FOUND', 'me...ot found', 'data': None}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+app.client - ERROR - Ошибка валидации данных: [
+  {
+    "loc": [
+      "clientId"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "transactionId"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "securityCode"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "error"
+    ],
+    "msg": "str type expected",
+    "type": "type_error.str"
+  }
+]
+app.client - ERROR - Неожиданная ошибка: 4 validation errors for OrderPlacementResponse
+clientId
+  field required (type=value_error.missing)
+transactionId
+  field required (type=value_error.missing)
+securityCode
+  field required (type=value_error.missing)
+error
+  str type expected (type=type_error.str)
+app.client - ERROR - Ошибка валидации данных: [
+  {
+    "loc": [
+      "clientId"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "transactionId"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "securityCode"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "error"
+    ],
+    "msg": "str type expected",
+    "type": "type_error.str"
+  }
+]
+app.client - ERROR - Неожиданная ошибка: 4 validation errors for OrderPlacementResponse
+clientId
+  field required (type=value_error.missing)
+transactionId
+  field required (type=value_error.missing)
+securityCode
+  field required (type=value_error.missing)
+error
+  str type expected (type=type_error.str)
+app.client - ERROR - Ошибка валидации данных: [
+  {
+    "loc": [
+      "clientId"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "transactionId"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "securityCode"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  }
+]
+app.client - ERROR - Неожиданная ошибка: 3 validation errors for OrderPlacementResponse
+clientId
+  field required (type=value_error.missing)
+transactionId
+  field required (type=value_error.missing)
+securityCode
+  field required (type=value_error.missing)
+app.client - ERROR - Ошибка валидации данных: [
+  {
+    "loc": [
+      "clientId"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "transactionId"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "securityCode"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "error"
+    ],
+    "msg": "str type expected",
+    "type": "type_error.str"
+  }
+]
+app.client - ERROR - Неожиданная ошибка: 4 validation errors for OrderPlacementResponse
+clientId
+  field required (type=value_error.missing)
+transactionId
+  field required (type=value_error.missing)
+securityCode
+  field required (type=value_error.missing)
+error
+  str type expected (type=type_error.str)
+app.client - ERROR - Ошибка валидации данных: [
+  {
+    "loc": [
+      "clientId"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "transactionId"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "securityCode"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  }
+]
+app.client - ERROR - Неожиданная ошибка: 3 validation errors for OrderPlacementResponse
+clientId
+  field required (type=value_error.missing)
+transactionId
+  field required (type=value_error.missing)
+securityCode
+  field required (type=value_error.missing)
+app.client - ERROR - Ошибка валидации данных: [
+  {
+    "loc": [
+      "clientId"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "transactionId"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "securityCode"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  }
+]
+app.client - ERROR - Неожиданная ошибка: 3 validation errors for OrderPlacementResponse
+clientId
+  field required (type=value_error.missing)
+transactionId
+  field required (type=value_error.missing)
+securityCode
+  field required (type=value_error.missing)
+app.client - ERROR - Неожиданная ошибка: 3 validation errors for OrderPlacementResponse
+clientId
+  field required (type=value_error.missing)
+transactionId
+  field required (type=value_error.missing)
+securityCode
+  field required (type=value_error.missing)

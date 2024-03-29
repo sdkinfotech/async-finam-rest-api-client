@@ -8,6 +8,7 @@ from pydantic import ValidationError
 from models.check_access_token_model import TokenValidationResponse
 from models.day_candles_model import DayCandlesResponse
 from models.intraday_candles_model import IntradayCandlesResponse
+from models.post_order_model import OrderPlacementResponse
 
 # Создание логгера
 logger = logging.getLogger(__name__)
@@ -111,6 +112,33 @@ class TradeAPIClient:
                     except ValidationError as e:
                         logger.error("Ошибка валидации данных: %s", e.json())
                         raise
+        except aiohttp.ClientError as e:
+            logger.error("Ошибка при выполнении запроса к API: %s", str(e))
+            raise
+        except Exception as e:
+            logger.error("Неожиданная ошибка: %s", str(e))
+            raise
+
+    async def place_order(self, order_data: dict) -> OrderPlacementResponse:
+        """
+        Асинхронный метод для размещения ордера на покупку или продажу.
+
+        :param order_data: Словарь с данными ордера.
+        :return: Экземпляр OrderPlacementResponse с результатом размещения ордера.
+        """
+        url = f"{self.base_url}/orders"
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.post(url, headers=self.headers, 
+                                        json=order_data,   
+                                        ssl=False) as response:  
+                    if response.status == 200:
+                        response_json = await response.json()
+                        return OrderPlacementResponse(**response_json['data'])
+                    else:
+                        error_message = await response.text()
+                        logger.error("Ошибка при размещении ордера: %s", error_message)
+                        raise Exception("Ошибка при размещении ордера: " + error_message)
         except aiohttp.ClientError as e:
             logger.error("Ошибка при выполнении запроса к API: %s", str(e))
             raise
